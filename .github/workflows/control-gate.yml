@@ -27,4 +27,3 @@ jobs:
             echo 'Control changes need a separate owner review.' >&2
             exit 1
           fi
-
