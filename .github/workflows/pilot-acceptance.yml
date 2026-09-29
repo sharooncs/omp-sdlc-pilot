@@ -20,4 +20,3 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python -I .github/checks/verify_pilot.py
-
