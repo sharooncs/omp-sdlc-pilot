@@ -24,7 +24,12 @@ jobs:
         run: |
           git fetch --no-tags origin "$HEAD_SHA"
           BRANCH_POINT=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
-          if git diff --no-renames --name-only "$BRANCH_POINT" "$HEAD_SHA" | grep -E '^\.github/|^\.coderabbit\.yaml$'; then
+          git diff --no-renames --name-only "$BRANCH_POINT" "$HEAD_SHA" > "$RUNNER_TEMP/changed-paths.txt"
+          if grep -E '^\.github/|^\.coderabbit\.yaml
+            echo 'Control changes need a separate owner review.' >&2
+            exit 1
+          fi
+ "$RUNNER_TEMP/changed-paths.txt"; then
             echo 'Control changes need a separate owner review.' >&2
             exit 1
           fi
