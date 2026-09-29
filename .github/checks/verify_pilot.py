@@ -11,6 +11,7 @@ MODULE = ROOT / "salon_booking.py"
 
 
 def check() -> None:
+    """Check the fixed booking contract and required pilot documents."""
     if not MODULE.exists():
         base = os.environ.get("BASE_SHA")
         if base:
@@ -57,7 +58,10 @@ def check() -> None:
     assert can_book([(10, 20)], 20, 30) is True
     assert can_book([(10, 20)], 5, 10) is True
     assert can_book([(10, 20)], 15, 25) is False
+    assert can_book([(10, 20), (30, 40)], 35, 45) is False
     assert can_book([(10, 20)], 10, 20) is False
+    assert can_book([], 20, 20) is False
+    assert can_book([], 30, 20) is False
     assert can_book([(10, 20)], 20, 20) is False
     assert can_book([(10, 20)], 30, 20) is False
 
