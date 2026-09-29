@@ -1,7 +1,5 @@
 """Trusted pilot acceptance checks; control-gate blocks PR edits to this file."""
 
-# Gate test: this control-file edit must be rejected.
-
 import importlib.util
 import os
 from pathlib import Path
